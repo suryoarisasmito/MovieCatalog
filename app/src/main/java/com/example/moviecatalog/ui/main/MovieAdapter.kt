@@ -1,4 +1,4 @@
-package com.example.moviecatalog
+package com.example.moviecatalog.ui.main
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,6 +7,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.moviecatalog.R
+import com.example.moviecatalog.ResultsItem
 
 class MovieAdapter(private val listMovie : List<ResultsItem>) : RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -22,16 +24,17 @@ class MovieAdapter(private val listMovie : List<ResultsItem>) : RecyclerView.Ada
         ViewHolder(LayoutInflater.from(viewGroup.context).inflate(R.layout.item_movie, viewGroup, false))
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.tvTitle.text = listMovie.get(position).title
-        holder.tvDesc.text = listMovie.get(position).overview
-        holder.tvRelease.text = listMovie?.get(position)!!.releaseDate
-        holder.tvAverage.text = listMovie?.get(position)!!.voteAverage.toString()
+        val movie = listMovie[position]
+        holder.tvTitle.text = movie.title
+        holder.tvDesc.text = movie.overview
+        holder.tvRelease.text = movie.releaseDate
+        holder.tvAverage.text = movie.voteAverage.toString()
 
         Glide.with(holder.itemView)
-            .load("https://image.tmdb.org/t/p/original" + listMovie[position]?.backdropPath)
+            .load("https://image.tmdb.org/t/p/original${listMovie[position].backdropPath}")
             .into(holder.imgPoster)
     }
 
-    override fun getItemCount(): Int = listMovie?.size!!
+    override fun getItemCount(): Int = listMovie.size
 
 }

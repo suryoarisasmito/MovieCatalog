@@ -1,10 +1,12 @@
-package com.example.moviecatalog
+package com.example.moviecatalog.ui.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.moviecatalog.MovieResponse
+import com.example.moviecatalog.ResultsItem
 import com.example.moviecatalog.databinding.ActivityMainBinding
 import com.example.moviecatalog.network.ApiConfig
 import retrofit2.Call
@@ -21,12 +23,12 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        supportActionBar?.hide()
-
-        val layoutManager = LinearLayoutManager(this)
-        binding.rvListMovie.layoutManager = layoutManager
-
+        initView()
         getMovies()
+    }
+
+    private fun initView() {
+        supportActionBar?.hide()
     }
 
     private fun getMovies() {
@@ -54,6 +56,7 @@ class MainActivity : AppCompatActivity() {
         movieList?.let { list ->
             movieAdapter = MovieAdapter(list)
             binding.rvListMovie.apply {
+                layoutManager = LinearLayoutManager(this@MainActivity)
                 adapter = movieAdapter
             }
         }
