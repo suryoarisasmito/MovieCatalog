@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">MovieCatalog</string>
+    <string name="title">Judul</string>
+    <string name="description">Overview</string>
+    <string name="release_date">Release Date</string>
+    <string name="vote_average">Vote Average</string>
+    <string name="imdb">IMDb</string>
+</resources>
