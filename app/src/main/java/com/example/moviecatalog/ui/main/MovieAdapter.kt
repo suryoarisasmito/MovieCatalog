@@ -34,7 +34,7 @@ class MovieAdapter(private val listMovie : List<ResultsItem>) : RecyclerView.Ada
 
         holder.itemMovie.setOnClickListener {
             val moveDetail = Intent(context, DetailActivity::class.java)
-            moveDetail.putExtra(DetailActivity.MOVIE_ID, listMovie[position].id)
+            moveDetail.putExtra(DetailActivity.MOVIE_ID.toString(), listMovie[position].id)
             context.startActivity(moveDetail)
         }
     }
