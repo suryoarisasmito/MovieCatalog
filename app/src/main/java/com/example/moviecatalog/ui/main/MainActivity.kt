@@ -1,10 +1,13 @@
 package com.example.moviecatalog.ui.main
 
+import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.moviecatalog.DetailResponse
 import com.example.moviecatalog.MovieResponse
 import com.example.moviecatalog.ResultsItem
 import com.example.moviecatalog.databinding.ActivityMainBinding
@@ -25,6 +28,8 @@ class MainActivity : AppCompatActivity() {
 
         initView()
         getMovies()
+
+
     }
 
     private fun initView() {
@@ -61,4 +66,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
+
+
+
 }
