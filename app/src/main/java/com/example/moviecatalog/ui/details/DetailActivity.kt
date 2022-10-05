@@ -17,7 +17,6 @@ import java.io.Serializable
 class DetailActivity : AppCompatActivity() {
 
     private lateinit var binding : ActivityDetailBinding
-    private var list = ArrayList<GenresItem>()
 
     companion object{
         const val MOVIE_ID = 0
@@ -34,15 +33,21 @@ class DetailActivity : AppCompatActivity() {
     }
 
     private fun setDetailMovie(detailMovie: DetailResponse) {
-        val list = ArrayList<GenresItem>()
         Glide.with(this@DetailActivity)
             .load("https://image.tmdb.org/t/p/original${detailMovie.backdropPath}")
             .into(binding.imgPosterDetail)
+
+        val genres = arrayListOf<String>()
+        for (genre in detailMovie.genres?.listIterator()!!) {
+            genres.add(genre?.name!!)
+        }
+        Log.d("TEST_DEBUG", "setDetailMovie: $genres")
 
         binding.tvRating.text = detailMovie.voteAverage.toString()
         binding.tvStatus.text = detailMovie.status
         binding.tvTitleDetail.text = detailMovie.title
         binding.tvDescription.text = detailMovie.overview
+        binding.tvGenre.text = genres.joinToString(separator = ",")
 
     }
 

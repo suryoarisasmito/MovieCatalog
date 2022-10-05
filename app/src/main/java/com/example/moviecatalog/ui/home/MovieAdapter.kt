@@ -1,7 +1,6 @@
-package com.example.moviecatalog.ui.main
+package com.example.moviecatalog.ui.home
 
 import android.content.Intent
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,7 +16,7 @@ import com.example.moviecatalog.ui.details.DetailActivity
 class MovieAdapter(private val listMovie : List<ResultsItem>) : RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int) =
-        ViewHolder(LayoutInflater.from(viewGroup.context).inflate(R.layout.item_movie, viewGroup, false))
+        ViewHolder(LayoutInflater.from(viewGroup.context).inflate(R.layout.item_movies, viewGroup, false))
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val movie = listMovie[position]
